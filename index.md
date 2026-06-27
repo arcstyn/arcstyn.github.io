@@ -16,7 +16,7 @@ June 26, 2026. Live, on the web; it's me, arcstyn. I like semicolons.
 - [Poetry](/poetry/)
 - [Notes](/notes/)
 
-# Contact Me
+## Contact Me
 - [Discord](https://discord.com/users/1339695301652385836)
 - [Instagram](https://instagram.com/amxgh_j): @amxgh_j
 - [X](https://x.com/amxgh_j): @amxgh_j
