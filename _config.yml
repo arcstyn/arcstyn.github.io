@@ -1,0 +1,18 @@
+permalink: /:categories/:title/
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:title/
+  poetry:
+    output: true
+    permalink: /poetry/:title/
+  notes:
+    output: true
+    permalink: /notes/:title/
+  projects:
+    output: true
+    permalink: /projects/:title/
+  microblog:
+    output: true
+    permalink: /microblog/:title/

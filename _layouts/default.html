@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | arcstyn //</title>
+    <style>
+        /* Minimalist Serif Aesthetic */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Subtle styling for links to keep it clean */
+        a {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        a:hover {
+            color: #00ff66; /* Neon green accent on hover */
+        }
+
+        /* Neon Green Semicolon Style */
+        .neon-semicolon {
+            color: #00ff66;
+            text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
+            font-weight: bold;
+        }
+
+        /* Basic list and heading resets for text-first feel */
+        ul {
+            list-style-type: stroke;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        h1, h2, h3 {
+            font-weight: normal;
+            margin-top: 40px;
+        }
+
+        footer {
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <main id="content">
+        {{ content }}
+        
+        <footer>
+            <hr style="border: 0; border-top: 1px dashed #333; margin: 40px 0;">
+            {% if page.url != "/" and page.url != "/index.html" %}
+                <a href="{{ '/' | relative_url }}">← home</a>
+            {% endif %}
+        </footer>
+
+    </main>
+
+    <script>
+        // Automatically find all semicolons and wrap them in a styled span
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentDiv = document.getElementById("content");
+            if (!contentDiv) return;
+
+            // Walk through all elements and find raw text nodes
+            const walker = document.createTreeWalker(
+                contentDiv, 
+                NodeFilter.SHOW_TEXT, 
+                null, 
+                false
+            );
+
+            let textNode;
+            const nodesToReplace = [];
+
+            // Collect text nodes first to avoid mutating the DOM while walking it
+            while (textNode = walker.nextNode()) {
+                if (textNode.nodeValue.includes(';')) {
+                    nodesToReplace.push(textNode);
+                }
+            }
+
+            // Replace semicolons safely by converting the text node into HTML spans
+            nodesToReplace.forEach(node => {
+                const parent = node.parentNode;
+                // Skip code blocks
+                if (parent.tagName === 'CODE' || parent.tagName === 'PRE') return;
+
+                const tempSpan = document.createElement('span');
+                // Escape HTML characters natively to prevent injection, then style the semicolons
+                tempSpan.innerHTML = node.nodeValue
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/;/g, '<span class="neon-semicolon">;</span>');
+                
+                // Swap the old plain text node for our new stylized nodes
+                while (tempSpan.firstChild) {
+                    parent.insertBefore(tempSpan.firstChild, node);
+                }
+                parent.removeChild(node);
+            });
+        });
+    </script>
+
+</body>
+</html>
