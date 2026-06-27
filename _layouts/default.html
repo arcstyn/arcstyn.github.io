@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | arcstyn //</title>
+    <title>{{ page.title }}</title>
+
     <style>
         /* Minimalist Serif Aesthetic */
         body {
@@ -16,15 +17,19 @@
             padding: 0 20px;
         }
 
-        /* Subtle styling for links to keep it clean */
+        /* Links */
         a {
             color: #ffffff;
             text-decoration: underline;
             text-underline-offset: 4px;
+            padding: 0 2px;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
 
         a:hover {
-            color: #00ff66; /* Neon green accent on hover */
+            background-color: #ffffff;
+            color: #121212;
+            text-decoration: none;
         }
 
         /* Neon Green Semicolon Style */
@@ -34,9 +39,8 @@
             font-weight: bold;
         }
 
-        /* Basic list and heading resets for text-first feel */
+        /* Basic list and heading styling */
         ul {
-            list-style-type: stroke;
             padding-left: 20px;
         }
 
@@ -44,7 +48,9 @@
             margin-bottom: 8px;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-weight: normal;
             margin-top: 40px;
         }
@@ -59,58 +65,54 @@
 
     <main id="content">
         {{ content }}
-        
+
         <footer>
             {% if page.url != "/" and page.url != "/index.html" %}
                 <hr style="border: 0; border-top: 1px dashed #ffffff; margin: 40px 0;">
                 <a href="{{ '/' | relative_url }}">← home</a>
             {% endif %}
         </footer>
-
     </main>
 
     <script>
         // Automatically find all semicolons and wrap them in a styled span
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const contentDiv = document.getElementById("content");
             if (!contentDiv) return;
 
-            // Walk through all elements and find raw text nodes
             const walker = document.createTreeWalker(
-                contentDiv, 
-                NodeFilter.SHOW_TEXT, 
-                null, 
+                contentDiv,
+                NodeFilter.SHOW_TEXT,
+                null,
                 false
             );
 
             let textNode;
             const nodesToReplace = [];
 
-            // Collect text nodes first to avoid mutating the DOM while walking it
-            while (textNode = walker.nextNode()) {
-                if (textNode.nodeValue.includes(';')) {
+            while ((textNode = walker.nextNode())) {
+                if (textNode.nodeValue.includes(";")) {
                     nodesToReplace.push(textNode);
                 }
             }
 
-            // Replace semicolons safely by converting the text node into HTML spans
             nodesToReplace.forEach(node => {
                 const parent = node.parentNode;
-                // Skip code blocks
-                if (parent.tagName === 'CODE' || parent.tagName === 'PRE') return;
 
-                const tempSpan = document.createElement('span');
-                // Escape HTML characters natively to prevent injection, then style the semicolons
+                // Skip code blocks
+                if (parent.tagName === "CODE" || parent.tagName === "PRE") return;
+
+                const tempSpan = document.createElement("span");
                 tempSpan.innerHTML = node.nodeValue
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
                     .replace(/;/g, '<span class="neon-semicolon">;</span>');
-                
-                // Swap the old plain text node for our new stylized nodes
+
                 while (tempSpan.firstChild) {
                     parent.insertBefore(tempSpan.firstChild, node);
                 }
+
                 parent.removeChild(node);
             });
         });
