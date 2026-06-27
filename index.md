@@ -7,7 +7,7 @@ title: Home
 
 June 26, 2026. Live, on the web; it's me, arcstyn. I like semicolons.
 
-- [A Proper Introduction](/notes/a-proper-introduction.html)
+- [A Proper Introduction](/notes/a-proper-introduction)
 - [Projects](/projects/)
 - [Microblog](/microblog/)
 
