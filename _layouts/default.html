@@ -7,7 +7,7 @@
     <style>
         /* Minimalist Serif Aesthetic */
         body {
-            background-color: #000000;
+            background-color: #121212;
             color: #ffffff;
             font-family: "Georgia", "Times New Roman", serif;
             line-height: 1.6;
@@ -61,8 +61,8 @@
         {{ content }}
         
         <footer>
-            <hr style="border: 0; border-top: 1px dashed #333; margin: 40px 0;">
             {% if page.url != "/" and page.url != "/index.html" %}
+                <hr style="border: 0; border-top: 1px dashed #ffffff; margin: 40px 0;">
                 <a href="{{ '/' | relative_url }}">← home</a>
             {% endif %}
         </footer>
