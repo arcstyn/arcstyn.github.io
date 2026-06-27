@@ -10,7 +10,7 @@ title: Microblog
 {% for p in entries %}
   {% if p.path contains 'microblog/' and p.url != '/microblog/' %}
 <article class="stream-entry">
-  <small style="color: #666;">{{ p.date | date: "%B %d, %Y — %I:%M %p" }}</small>
+  <small style="color: #666;">{{ p.date | date: "%B %d, %Y" }}</small>
   
   {{ p.content }}
 </article>
