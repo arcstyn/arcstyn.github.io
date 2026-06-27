@@ -1,0 +1,23 @@
+modifiedTitlePosition: "None"
+yamlHeaderFormStructure: []
+
+perFolderConfig:
+  "essays":
+    extraAttributes:
+      layout: "default"
+  
+  "poetry":
+    extraAttributes:
+      layout: "default"
+
+  "notes":
+    extraAttributes:
+      layout: "default"
+
+  "microblog":
+    extraAttributes:
+      layout: null
+
+  "projects":
+    extraAttributes:
+      layout: null
