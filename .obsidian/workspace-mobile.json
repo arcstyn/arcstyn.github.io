@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "microblog/202606272133.md",
+                "file": "notes/a-proper-introduction.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "202606272133"
+              "title": "a-proper-introduction"
             }
           }
         ]
@@ -178,8 +178,10 @@
   },
   "active": "519d22586c45a7e6",
   "lastOpenFiles": [
-    "2026-06-27.md",
+    "index.md",
     "microblog/202606272133.md",
+    "/index.md",
+    "2026-06-27.md",
     "202606272133",
     "projects/index.md",
     "poetry/index.md",
@@ -187,7 +189,6 @@
     "notes/a-proper-introduction.md",
     "microblog/index.md",
     "microblog/20260627.md",
-    "index.md",
     "essays/index.md",
     "_layouts/default.html",
     "_config.yml",
