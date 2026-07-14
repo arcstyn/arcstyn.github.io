@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "microblog/20260714.md",
+                "file": "notes/a-proper-introduction.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "20260714"
+              "title": "a-proper-introduction"
             }
           }
         ],
@@ -191,10 +191,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f66a442c2d5ce4c4",
+  "active": "6e5284e5e82b8303",
   "lastOpenFiles": [
-    "essays/index.md",
     "microblog/20260714.md",
+    "essays/index.md",
     "index.md",
     "poetry/index.md",
     "microblog/20260627.md",
